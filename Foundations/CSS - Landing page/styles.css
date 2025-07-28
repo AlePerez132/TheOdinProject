@@ -51,8 +51,7 @@ button {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 40%;
-}
+    width: 40%}
 
 /*PRIMER BLOQUE*/
 .bloque1 {
@@ -149,7 +148,7 @@ button {
 .bloque3 .cita{
     font-size: 36px;
     font-style:italic;
-    margin: 80px 240px 0px;
+    margin: 80px 400px 0px;
     color:#38414f;
 }
 
@@ -157,7 +156,7 @@ button {
     font-size:26px;
     text-align:right;
     font-weight: bold;
-    margin:4px 240px 80px;
+    margin:20px 440px 80px;
 }
 
 /*CUARTO BLOQUE*/
