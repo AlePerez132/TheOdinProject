@@ -7,6 +7,7 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    font-weight:bold;
 }
 
 .container{
@@ -16,32 +17,47 @@ body{
     justify-content: center;
     border-radius: 10px;
     width: 80%;
+    height: 100%;
     background-color: brown;
 }
 
 .title{
     font-size: 2rem;
-    color: white;
+    color: black;
     margin: 20px 0;
+    background-color: rgb(255, 255, 25);
+    padding: 10px 20px;
+    border-radius:5px;
+    border:solid 2px black;
 }
 
 .buttons{
     display:flex;
     justify-content: center;
     flex-direction:row;
-    gap:400px;
+    gap:17vw;
 }
 
 button{
     padding: 20px 40px;
-    font-size: 1rem;
+    font-size: 1.5rem;
     border: 2px solid black;
     border-radius: 5px;
-    background-color: yellow;
+    background-color: rgb(255, 255, 255);
     color: black;
+}
+
+button:hover{
+    background-color: rgb(255, 255, 75);
+    cursor: pointer;
 }
 
 .screen{
     margin:40px;
+    width:35vw;
+    aspect-ratio: 1 / 1;
+    display: grid;
+    border: solid 5px black;
+    border-radius:4px;
 }
 
