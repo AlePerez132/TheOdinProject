@@ -1,0 +1,67 @@
+body{
+    font-family:'Courier New', sans-serif;
+    padding:0px;
+    margin:0px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #36454F;
+}
+
+.container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    background-color:#71797E;
+    border-radius:8px;
+    height:90vh;   
+    border:solid 4px black;
+}
+
+.display{
+    padding: 1vw 2vh;
+    background-color:ghostwhite;
+    border-radius:5px;
+    width:60%;
+    font-family:'Orbitron', sans-serif;
+    font-weight:bold;
+    font-style:italic;
+    font-size: 2rem;
+    text-align: right;
+    margin: 3vh;
+}
+
+.buttons{
+    display:grid;
+    margin:15px 30px;
+    padding:2vh 2vw;
+    grid-template-rows: repeat(6, auto);
+    grid-template-columns: repeat(3, auto);
+    grid-template-areas: 
+        "add substract backspace"
+        "multiply divide clear"
+        "number7 number8 number9"
+        "number4 number5 number6"
+        "number1 number2 number3"
+        "decimal number0 equals";
+    gap:2vh 6.5vw;
+    border-radius:15px;
+    background-color: #535658;
+    width:70%;
+    height:70%;
+}
+
+button{
+    padding: 5px;
+    background-color: lightgray;
+    border-radius: 80px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: solid 3px black;
+}
+
