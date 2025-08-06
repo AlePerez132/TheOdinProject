@@ -39,36 +39,44 @@ clearButton.addEventListener("click", () => {
     storedValue = "";
 });
 
+//En las operaciones, es importante que al hacer la primera operacion, o despues de un clear o =, devuelva el mismo valor
+//Esto se consigue manipulando el valor de storedvalue en funcion de la operacion que se va a realizar
+
+//para sumar, storedvalue debe valer 0 (ej: 0 + 8 = 8)
 addButton.addEventListener("click", () => {
+    if(booleanOperation) //para limitar operaciones consecutivas sin segundo operando
+        return;
     if(storedValue == "")
         storedValue = 0;
     operationSign = "+";
     callingOperate();
 });
-
+//para multiplicar, storedvalue debe valer 1 (ej: 1 * 36 = 36)
 multiplyButton.addEventListener("click", () => {
+    if(booleanOperation)
+        return;
     if(storedValue == ""){
         storedValue = 1;
     }
     operationSign = "*";
     callingOperate();
 });
-
+//para dividir, debe valer el cuadrado del numero inicial (ej: 16 / 4 = 4)
 divideButton.addEventListener("click", () => {
+    if(booleanOperation)
+        return;
     operationSign = "/";
     if(storedValue == ""){
         storedValue = Number(result.innerText) * Number(result.innerText)   ;
     }
     callingOperate();
 });
-
+//para restar, debe valer el doble del numero inicial (ej: 64-36 = 36)
 substractButton.addEventListener("click", () => {
-    console.log("INICIO: Storedvalue vale " + storedValue + " y el display muestra " + result.innerText);
     if(storedValue=="")
         storedValue = Number(result.innerText) *2;
     operationSign = "-";
     callingOperate();
-    console.log("FIN: Storedvalue vale " + storedValue + " y el display muestra " + result.innerText);
 });
 
 equalsButton.addEventListener("click", () => {
@@ -134,7 +142,7 @@ function typeNumber(number) {
 function callingOperate() {
     storedValue = operate(Number(storedValue), operationSign, Number(result.innerText));
     if (typeof storedValue === "number" && !Number.isInteger(storedValue)) {
-        storedValue = Number(storedValue.toFixed(10));
+        storedValue = Number(storedValue.toFixed(10)); 
     }
     booleanOperation = true;
     result.innerText = String(storedValue)
