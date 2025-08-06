@@ -96,11 +96,20 @@ backspaceButton.addEventListener("click", () => {
     result.innerText = currentInput;
 });
 
+//soporte para teclado (solo números y .)
+document.addEventListener("keydown", (event) => {
+    const key = event.key;
+    if ((key >= "0" && key <= "9") || key === ".") {
+        typeNumber(key);
+    }
+});
+
 //Calculator Variables
 let storedValue = "";
 let operationSign = "";
 let currentInput = "0";
 let booleanOperation = false;
+const MAXDIGITS = 10;
 
 let addFunction = (a, b) => a + b;
 let substractFunction = (a, b) => a - b;
@@ -123,12 +132,19 @@ let operate = (a, operation, b) => {
 };
 
 function typeNumber(number) {
+    if(operationSign == "/" && number =="0"){
+        alert("Division by 0 is not allowed");
+        return;
+    }
+    if (!((number >= 0 && number <= 9) || number === ".")) {
+        return;
+    }
     if (booleanOperation == true) {
         result.innerText = "";
         currentInput = "";
         booleanOperation = false;
     }
-    if (currentInput.length < 10) {
+    if (currentInput.length < MAXDIGITS) {
         if (currentInput == "0") {
             currentInput = String(number);
         }
@@ -142,7 +158,12 @@ function typeNumber(number) {
 function callingOperate() {
     storedValue = operate(Number(storedValue), operationSign, Number(result.innerText));
     if (typeof storedValue === "number" && !Number.isInteger(storedValue)) {
-        storedValue = Number(storedValue.toFixed(10)); 
+        storedValueAbs = Math.abs(storedValue);
+        storedValueAbsFloor = Math.floor(storedValueAbs);
+        console.log(storedValueAbsFloor);
+        console.log(String(storedValueAbsFloor).length);
+        decimalPrecision = MAXDIGITS - String(storedValueAbsFloor).length;
+        storedValue = Number(storedValue.toFixed(decimalPrecision)); 
     }
     booleanOperation = true;
     result.innerText = String(storedValue)
