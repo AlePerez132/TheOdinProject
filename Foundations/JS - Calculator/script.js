@@ -28,7 +28,7 @@ numberButtons.forEach((button, index) => {
 });
 
 decimalButton.addEventListener("click", () => {
-    if (result.innerText != "0")
+    if (result.innerText != "0" && !result.innerText.includes("."))
         typeNumber(".");
 });
 
@@ -120,7 +120,7 @@ function typeNumber(number) {
         currentInput = "";
         booleanOperation = false;
     }
-    if (currentInput.length < 16) {
+    if (currentInput.length < 10) {
         if (currentInput == "0") {
             currentInput = String(number);
         }
@@ -133,6 +133,9 @@ function typeNumber(number) {
 
 function callingOperate() {
     storedValue = operate(Number(storedValue), operationSign, Number(result.innerText));
+    if (typeof storedValue === "number" && !Number.isInteger(storedValue)) {
+        storedValue = Number(storedValue.toFixed(10));
+    }
     booleanOperation = true;
     result.innerText = String(storedValue)
 }
